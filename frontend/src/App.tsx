@@ -8,7 +8,7 @@ function App() {
       <main>
         <section id="sales">
           <div className="dsmeta-container">
-            <SalesCrad />
+            <SalesCard />
           </div>
         </section>
       </main>
