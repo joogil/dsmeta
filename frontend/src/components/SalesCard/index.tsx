@@ -15,14 +15,33 @@ function SalesCard() {
   const [minDate, setMinDate] = useState(min)
   const [maxDate, setMaxDate] = useState(max)
   
-  const [sales, setSales] = useState<Sale[]>([])
+  const [sales, setSales] = useState<Sale[]>([]) // para armazenar lista de vendas
+  
+  //useEffect(() => {
+  //  console.log('TESTE')
+  //  axios.get('http://localhost:8080/sales').then(response => { // retorna uma Promise
+  //    console.log(response.data)
+  //  })
+  //
+  //  axios.get(`${BASE_URL}/sales`).then(response => { // retorna uma Promise
+  //    setSales(response.data.content)
+  //  })
+  //}, [])
   
   useEffect(() => {
-    axios.get(`${BASE_URL}/sales`).then(response => {
+    const dmin = minDate.toISOString().slice(0, 10)
+    const dmax = maxDate.toISOString().slice(0, 10)
+    
+    //axios.get(`${BASE_URL}/sales`).then(response => {
+    //  console.log(response.data)
+    //  setSales(response.data.content)
+    //})
+    
+    axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`).then(response => {
       //console.log(response.data)
       setSales(response.data.content)
     })
-  }, [])
+  }, [minDate, maxDate])
   
   return (
     <div className="dsmeta-card">
