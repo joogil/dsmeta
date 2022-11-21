@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.devsuperior.dsmeta.entities.Sale;
 
+// Linguagem JPQL
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 	
 	@Query("SELECT obj FROM Sale obj WHERE obj.date BETWEEN :min AND :max ORDER BY obj.amount DESC")
